@@ -1,3 +1,5 @@
+<img src="https://github.com/railsware/caphub/raw/master/caphub.png" style="float:right" />
+
 ## Caphub
 
 Generate centralized capistrano skeleton for multiple deployment.
