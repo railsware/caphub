@@ -40,7 +40,7 @@ Another included gems are optional but might be useful:
 
 Generate caphub layout:
 
-    $ cuphub my-deploy
+    $ caphub my-deploy
 
     Creating directory my-deploy
     Creating capistrano skeleton in my-deploy
