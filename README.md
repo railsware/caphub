@@ -28,9 +28,9 @@ Core of caphub skeleton is [capistrano-multiconfig](https://github.com/railsware
 Another included gems are optional but might be useful:
 
 * [capistrano_colors](https://github.com/stjernstrom/capistrano_colors)
-* [capistrano-uptodate](https://github.com/railsware/capistrano-uptodate/README.md)
-* [capistrano-patch](https://github.com/railsware/capistrano-patch/README.md)
-* [capistrano-calendar](https://github.com/railsware/capistrano-calendar/README.md)
+* [capistrano-uptodate](https://github.com/railsware/capistrano-uptodate#readme)
+* [capistrano-patch](https://github.com/railsware/capistrano-patch#readme)
+* [capistrano-calendar](https://github.com/railsware/capistrano-calendar#readme)
 
 ## Installation
 
@@ -94,7 +94,7 @@ Put own recipes to `recipes` directory.
 * [capistrano-ext](https://github.com/capistrano/capistrano-ext)
 * [capistrano_colors](https://github.com/stjernstrom/capistrano_colors)
 * [capistrano-multiconfig](https://github.com/railsware/capistrano-multiconfig)
-* [capistrano-uptodate](https://github.com/railsware/capistrano-uptodate/README.md)
-* [capistrano-patch](https://github.com/railsware/capistrano-patch/README.md)
-* [capistrano-calendar](https://github.com/railsware/capistrano-calendar/README.md)
+* [capistrano-uptodate](https://github.com/railsware/capistrano-uptodate#readme)
+* [capistrano-patch](https://github.com/railsware/capistrano-patch#readme)
+* [capistrano-calendar](https://github.com/railsware/capistrano-calendar#readme)
 
