@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Caphub by railsware</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Caphub</h1>
+          <h2>Generate centralized capistrano skeleton for multiple deployment</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/railsware/caphub/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/railsware/caphub/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/railsware/caphub" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <p><img src="https://github.com/railsware/caphub/raw/master/caphub.png"></p>
+
+<h2>Caphub</h2>
+
+<p>Generate centralized capistrano skeleton for multiple deployment.</p>
+
+<h2>Caphub Concept</h2>
+
+<p>Main idea of caphub is separate deployment and application code. So instead of <code>capify</code> your each project create <strong>one</strong> caphub repository and put <strong>all</strong> configurations/recipes there.</p>
+
+<p>Benefits:</p>
+
+<ul>
+<li>no deployment/application code mix.</li>
+<li>all deployment located in place.</li>
+<li>ability to deploy multiple projects</li>
+<li>deployment is not limited application deployment - deploy your system configurations too! (nginx/haproxy/etc configs)</li>
+<li>easy to share configurations/recipes among multiple deployment.</li>
+<li>uptodate synchronizing with remote repository (with capistrano-uptodate).</li>
+<li>generate layout with caphub or write it yourself from scratch with your own recipes</li>
+</ul><h2>Description</h2>
+
+<p>Caphub is simple generation tool that follows <em>caphub concept</em>.</p>
+
+<p>Caphub generates similar layout that does usual <code>capify</code> command.
+Core of caphub skeleton is <a href="https://github.com/railsware/capistrano-multiconfig">capistrano-multiconfig</a> gem that allows to recursively build multiple configurations. </p>
+
+<p>Another included gems are optional but might be useful:</p>
+
+<ul>
+<li><a href="https://github.com/stjernstrom/capistrano_colors">capistrano_colors</a></li>
+<li><a href="https://github.com/railsware/capistrano-uptodate#readme">capistrano-uptodate</a></li>
+<li><a href="https://github.com/railsware/capistrano-patch#readme">capistrano-patch</a></li>
+<li><a href="https://github.com/railsware/capistrano-calendar#readme">capistrano-calendar</a></li>
+</ul><h2>Installation</h2>
+
+<pre><code>$ gem install caphub
+</code></pre>
+
+<h2>Usage</h2>
+
+<p>Generate caphub layout:</p>
+
+<pre><code>$ caphub my-deploy
+
+Creating directory my-deploy
+Creating capistrano skeleton in my-deploy
+Initializating git repository in my-deploy
+</code></pre>
+
+<p>Layout example:</p>
+
+<pre><code>$ tree --dirsfirst my-deploy
+my-deploy
+├── config
+│   ├── deploy
+│   └── deploy.rb
+├── recipes
+├── Capfile
+├── Gemfile
+└── Gemfile.lock
+</code></pre>
+
+<p>Review gems into <code>Gemfile</code> and initialize gems:</p>
+
+<pre><code>$ bundle install
+</code></pre>
+
+<p>Push repository remote server:</p>
+
+<pre><code>git remote add origin your/remote/git/repo/url
+git push -u origin master
+</code></pre>
+
+<h3>Configurations</h3>
+
+<p>Put own configuration in <code>config/deploy</code>. </p>
+
+<p>E.g create <code>config/deploy/blog/production.rb</code> and it will be automatically available:</p>
+
+<pre><code>$ bundle exec cap -T
+cap blog:production      # Load blog:production configuration
+</code></pre>
+
+<p>Use any recipe with configuration task (similar to multistage extension). E.g:</p>
+
+<pre><code>$ bundle exec cap blog:production deploy:setup
+</code></pre>
+
+<h3>Recipes</h3>
+
+<p>Add gems that contains capistrano recipes to <code>Gemfile</code>.</p>
+
+<p>Configure and require recipes into <code>Capfile</code>.</p>
+
+<p>Put own recipes to <code>recipes</code> directory.</p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="https://github.com/capistrano/capistrano">capistrano</a></li>
+<li><a href="https://github.com/capistrano/capistrano-ext">capistrano-ext</a></li>
+<li><a href="https://github.com/stjernstrom/capistrano_colors">capistrano_colors</a></li>
+<li><a href="https://github.com/railsware/capistrano-multiconfig">capistrano-multiconfig</a></li>
+<li><a href="https://github.com/railsware/capistrano-uptodate#readme">capistrano-uptodate</a></li>
+<li><a href="https://github.com/railsware/capistrano-patch#readme">capistrano-patch</a></li>
+<li><a href="https://github.com/railsware/capistrano-calendar#readme">capistrano-calendar</a></li>
+</ul>
+        </section>
+
+        <footer>
+          Caphub is maintained by <a href="https://github.com/railsware">railsware</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
