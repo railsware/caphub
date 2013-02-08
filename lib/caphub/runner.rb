@@ -13,20 +13,19 @@ module Caphub
 
     def initialize(args)
       @args = args.dup
-      @options = {}
+      @options = { :ruby => "1.8" }
     end
 
     attr_reader :options
 
     def parse_options!
       OptionParser.new do |opts|
-        opts.banner = "Usage: #{File.basename($0)} [opts] [path]"
-        opts.on_tail("--1.9", "Use ruby 1.9 in the .rvmrc (this is the default)") {puts opts; exit }
-        opts.on_tail("--1.8", "Use ruby 1.8 in the .rvmrc") {puts opts; exit }
-        opts.on_tail("--jruby", "Use jruby in the .rvmrc") {puts opts; exit }
+        opts.banner = "Usage: #{File.basename($0)} [path]"
+
+        opts.on("--ruby [VERSION]", "Choose the ruby version to use in the .rvmrc (ruby1_8, ruby1_9 or jruby)", [:ruby1_8, :ruby1_9, :jruby]) { |ruby| options[:ruby] = ruby }
+
         opts.on_tail("-h", "--help", "Show this message") { puts opts; exit }
         opts.on_tail('-v', '--version', "Show version")   { puts Caphub::VERSION; exit }
-
         begin
           opts.parse!(ARGV)
         rescue OptionParser::ParseError => e
@@ -37,9 +36,9 @@ module Caphub
       end
 
       abort "Please specify the directory for capistrano hub" if @args.empty?
-      abort "'#{@args.first}' exists." if File.exists?(@args.first)
+      abort "'#{@args.last}' exists." if File.exists?(@args.first)
 
-      @options[:target] = @args.first
+      @options[:target] = @args.last
     end
 
     def skeleton_dir
@@ -54,6 +53,9 @@ module Caphub
 
       puts "Creating capistrano skeleton in #{target}"
       FileUtils.cp_r("#{skeleton_dir}/.", target)
+
+      puts "Copying the desired .rvmrc template to .rvmrc"
+      FileUtils.cp("#{skeleton_dir}/.rvmrc_#{options[:ruby]}", "#{target}/.rvmrc")
 
       puts "Initializating git repository in #{target}"
       Dir.chdir(target) { `git init`;  `git add .` }
