@@ -2,7 +2,7 @@
 # Put here shared configuration shared among all children
 #
 # Read more about configurations:
-# https://github.com/railsware/capistrano-multiconfig/README.md
+# https://github.com/railsware/capistrano-multiconfig/blob/master/README.md
 
 # Configuration example for layout like:
 # config/deploy/{NAMESPACE}/.../#{PROJECT_NAME}/{STAGE_NAME}.rb
