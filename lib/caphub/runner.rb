@@ -13,7 +13,7 @@ module Caphub
 
     def initialize(args)
       @args = args.dup
-      @options = { :ruby => "1.8" }
+      @options = { :ruby => :ruby1_8 }
     end
 
     attr_reader :options
@@ -54,7 +54,7 @@ module Caphub
       puts "Creating capistrano skeleton in #{target}"
       FileUtils.cp_r("#{skeleton_dir}/.", target)
 
-      puts "Copying the desired .rvmrc template to .rvmrc"
+      puts "Copying the desired .rvmrc template for #{Caphub::RUBIES[options[:ruby]]} to .rvmrc"
       FileUtils.cp("#{skeleton_dir}/.rvmrc_#{Caphub::RUBIES[options[:ruby]]}", "#{target}/.rvmrc")
 
       puts "Initializating git repository in #{target}"
