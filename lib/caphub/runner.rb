@@ -55,7 +55,7 @@ module Caphub
       FileUtils.cp_r("#{skeleton_dir}/.", target)
 
       puts "Copying the desired .rvmrc template to .rvmrc"
-      FileUtils.cp("#{skeleton_dir}/.rvmrc_#{options[:ruby]}", "#{target}/.rvmrc")
+      FileUtils.cp("#{skeleton_dir}/.rvmrc_#{Caphub::RUBIES[options[:ruby]]}", "#{target}/.rvmrc")
 
       puts "Initializating git repository in #{target}"
       Dir.chdir(target) { `git init`;  `git add .` }
