@@ -3,6 +3,17 @@ Feature: Caphub
   As a CLI
   I want to a comfortable set of commands to maintain different applications
 
+  Scenario: When the user is confused
+    When I run `caphub`
+    Then the output should contain "Please specify the directory for capistrano hub"
+
+    When I run `caphub -h`
+    Then the output should contain "Usage: caphub [path]"
+
+    When I run `caphub --wtf`
+    Then the output should contain "invalid option: --wtf"
+
+
   Scenario: Creating with standard ruby (1.8)
     When I run `caphub test`
     Then the output should contain "Copying the desired .rvmrc template for 1.8 to .rvmrc"
