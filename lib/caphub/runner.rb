@@ -20,7 +20,10 @@ module Caphub
 
     def parse_options!
       OptionParser.new do |opts|
-        opts.banner = "Usage: #{File.basename($0)} [path]"
+        opts.banner = "Usage: #{File.basename($0)} [opts] [path]"
+        opts.on_tail("--1.9", "Use ruby 1.9 in the .rvmrc (this is the default)") {puts opts; exit }
+        opts.on_tail("--1.8", "Use ruby 1.8 in the .rvmrc") {puts opts; exit }
+        opts.on_tail("--jruby", "Use jruby in the .rvmrc") {puts opts; exit }
         opts.on_tail("-h", "--help", "Show this message") { puts opts; exit }
         opts.on_tail('-v', '--version', "Show version")   { puts Caphub::VERSION; exit }
 
