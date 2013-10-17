@@ -25,13 +25,6 @@ Caphub is simple generation tool that follows *caphub concept*.
 Caphub generates similar layout that does usual `capify` command.
 Core of caphub skeleton is [capistrano-multiconfig](https://github.com/railsware/capistrano-multiconfig) gem that allows to recursively build multiple configurations. 
 
-Another included gems are optional but might be useful:
-
-* [capistrano_colors](https://github.com/stjernstrom/capistrano_colors)
-* [capistrano-uptodate](https://github.com/railsware/capistrano-uptodate#readme)
-* [capistrano-patch](https://github.com/railsware/capistrano-patch#readme)
-* [capistrano-calendar](https://github.com/railsware/capistrano-calendar#readme)
-
 ## Installation
 
     $ gem install caphub
@@ -40,7 +33,17 @@ Another included gems are optional but might be useful:
 
 Generate caphub layout:
 
+#### Capistrano 3
+
     $ caphub my-deploy
+
+    Creating directory my-deploy
+    Creating capistrano skeleton in my-deploy
+    Initializating git repository in my-deploy
+
+#### Capistrano 2
+
+    $ caphub --cap 2 my-deploy
 
     Creating directory my-deploy
     Creating capistrano skeleton in my-deploy
@@ -55,8 +58,7 @@ Layout example:
     │   └── deploy.rb
     ├── recipes
     ├── Capfile
-    ├── Gemfile
-    └── Gemfile.lock
+    └── Gemfile
 
 Review gems into `Gemfile` and initialize gems:
 
@@ -91,8 +93,6 @@ Put own recipes to `recipes` directory.
 ## References
 
 * [capistrano](https://github.com/capistrano/capistrano)
-* [capistrano-ext](https://github.com/capistrano/capistrano-ext)
-* [capistrano_colors](https://github.com/stjernstrom/capistrano_colors)
 * [capistrano-multiconfig](https://github.com/railsware/capistrano-multiconfig)
 * [capistrano-uptodate](https://github.com/railsware/capistrano-uptodate#readme)
 * [capistrano-patch](https://github.com/railsware/capistrano-patch#readme)

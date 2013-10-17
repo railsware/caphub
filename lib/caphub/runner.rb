@@ -13,7 +13,7 @@ module Caphub
 
     def initialize(args)
       @args = args.dup
-      @options = {}
+      @options = { cap: 3 }
     end
 
     attr_reader :options
@@ -21,6 +21,7 @@ module Caphub
     def parse_options!
       OptionParser.new do |opts|
         opts.banner = "Usage: #{File.basename($0)} [path]"
+        opts.on("-c", "--cap", "Capistrano version 2 or 3") { |v| options[:cap] = v }
         opts.on_tail("-h", "--help", "Show this message") { puts opts; exit }
         opts.on_tail('-v', '--version', "Show version")   { puts Caphub::VERSION; exit }
 
@@ -40,7 +41,7 @@ module Caphub
     end
 
     def skeleton_dir
-      File.expand_path('../../../skeleton', __FILE__)
+      File.expand_path("../../../skeletons/cap#{options[:cap]}", __FILE__)
     end
 
     def run!
