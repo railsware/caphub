@@ -6,7 +6,7 @@
 
 ask :branch, 'master'
 
-set :application, proc { fetch(:config_name).split(':').reverse[1] }
+set :application, proc { fetch(:stage).split(':').reverse[1] }
 
 set :repo_url, proc { "git@github.com:me/#{fetch(:application)}.git" }
 
