@@ -10,8 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/railsware/caphub"
   s.summary     = %q{Generate centralized capistrano skeleton for multiple deployment}
   s.description = %q{Generate centralized capistrano skeleton for multiple deployment}
-
-  s.rubyforge_project = "caphub"
+  s.license     = "MIT"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
