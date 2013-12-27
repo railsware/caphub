@@ -13,7 +13,7 @@ module Caphub
 
     def initialize(args)
       @args = args.dup
-      @options = { cap: 3 }
+      @options = { :cap=> 3 }
     end
 
     attr_reader :options
