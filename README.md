@@ -90,6 +90,10 @@ Configure and require recipes into `Capfile`.
 
 Put own recipes to `recipes` directory.
 
+## Authors
+
+* [Andriy Yanko](http://ayanko.github.io)
+
 ## References
 
 * [capistrano](https://github.com/capistrano/capistrano)
