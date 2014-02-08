@@ -21,12 +21,12 @@ module Caphub
     def parse_options!
       OptionParser.new do |opts|
         opts.banner = "Usage: #{File.basename($0)} [path]"
-        opts.on("-c", "--cap", "Capistrano version 2 or 3") { |v| options[:cap] = v }
+        opts.on("-c", "--cap VERSION", "Capistrano version 2 or 3") { |v| options[:cap] = v }
         opts.on_tail("-h", "--help", "Show this message") { puts opts; exit }
         opts.on_tail('-v', '--version', "Show version")   { puts Caphub::VERSION; exit }
 
         begin
-          opts.parse!(ARGV)
+          opts.parse!(@args)
         rescue OptionParser::ParseError => e
           warn e.message
           puts opts
